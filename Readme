@@ -1,0 +1,178 @@
+# 🚀 Task Manager App (Full Stack)
+
+A full-stack **Task Manager Application** built using **Node.js, Express, MongoDB, and Vanilla JavaScript (Axios)** with **JWT Authentication**.
+
+---
+
+## 🌐 Live Demo
+
+* 🔗 Frontend: https://chamithkumar.github.io/auth-dashboard/
+* 🔗 Backend: https://taskmanager-auth-day19.onrender.com
+* 🔗 Netlify: https://task-manager-amith.netlify.app/
+
+---
+
+## 📌 Features
+
+* ✅ User Signup & Login (JWT आधारित authentication)
+* 🔐 Protected Routes (only logged-in users can access tasks)
+* 📝 Add Tasks
+* ✏️ Edit Tasks
+* ❌ Delete Tasks
+* ✔️ Mark Tasks as Completed
+* 🔍 Search Tasks
+* 📂 Categories (Work, Personal, Urgent)
+* 🚪 Logout System
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB (Mongoose)
+* JWT (jsonwebtoken)
+* bcryptjs
+* dotenv
+* cors
+
+### Frontend
+
+* HTML
+* CSS
+* JavaScript
+* Axios
+
+---
+
+## 📁 Project Structure
+
+```
+project/
+│
+├── models/
+│   ├── User.js
+│   └── Task.js
+│
+├── middleware/
+│   └── auth.js
+│
+├── server.js
+├── .env
+└── package.json
+```
+
+---
+
+## ⚙️ Installation (Local Setup)
+
+### 1. Clone Repository
+
+```
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+### 2. Install Dependencies
+
+```
+npm install
+```
+
+### 3. Setup Environment Variables
+
+Create `.env` file:
+
+```
+MONGO_URI=your_mongodb_url
+JWT_SECRET=your_secret_key
+```
+
+### 4. Run Server
+
+```
+node server.js
+```
+
+Server will run at:
+
+```
+http://localhost:3000
+```
+
+---
+
+## 🔐 API Endpoints
+
+### Auth
+
+* POST `/signup` → Register user
+* POST `/login` → Login & get token
+
+### Tasks (Protected)
+
+* GET `/tasks` → Get user tasks
+* POST `/tasks` → Add task
+* PUT `/tasks/:id` → Update task
+* DELETE `/tasks/:id` → Delete task
+
+---
+
+## 🔑 Authentication
+
+After login, token is stored in:
+
+```
+localStorage
+```
+
+Send token in headers:
+
+```
+Authorization: Bearer <token>
+```
+
+---
+
+## 🚀 Deployment
+
+* Frontend → GitHub Pages
+* Backend → Render
+* Database → MongoDB Atlas
+
+---
+
+## 📸 Screenshots
+
+(Add screenshots of your UI here)
+
+---
+
+## 👨‍💻 Author
+
+* Name: Amith Kumar
+* GitHub: https://github.com/chamithkumar
+
+---
+
+## ⭐ Acknowledgment
+
+This project was built as part of a **Full Stack Internship Learning Program**.
+
+---
+
+## 💡 Future Improvements
+
+* 🎨 Improve UI/UX (modern design)
+* 📅 Add due dates
+* ⭐ Task priority
+* 👤 User profile
+* 🌙 Dark mode
+
+---
+
+## 📜 License
+
+This project is open-source and free to use.
