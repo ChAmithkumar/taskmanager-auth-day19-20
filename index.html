@@ -3,10 +3,144 @@
 <head>
     <title>Task Manager</title>
     <style>
-        body { font-family: Arial; max-width: 700px; margin: auto; }
-        .completed { text-decoration: line-through; color: gray; }
-        button { margin-left: 5px; }
-        input, select { margin: 5px; padding: 5px; }
+        body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Container */
+body > * {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Card Layout */
+h1, h3, input, select, button, ul {
+    margin-top: 15px;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+}
+
+/* Sections */
+h3 {
+    color: #444;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+/* Inputs */
+input, select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 5px #667eea;
+}
+
+/* Buttons */
+button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    background: #667eea;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #5a67d8;
+    transform: scale(1.05);
+}
+
+/* Logout Button */
+button:nth-of-type(2) {
+    background: #e53e3e;
+}
+
+button:nth-of-type(2):hover {
+    background: #c53030;
+}
+
+/* Task List */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* Completed Task */
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* Priority Badges */
+.priority {
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.high {
+    background: #e53e3e;
+}
+
+.medium {
+    background: #dd6b20;
+}
+
+.low {
+    background: #38a169;
+}
+
+/* Task Buttons */
+li button {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+/* Search Box */
+#search {
+    width: 95%;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    li div {
+        margin-top: 5px;
+    }
+}
     </style>
 </head>
 <body>
@@ -106,38 +240,24 @@ function loadTasks() {
         }
     })
     .then(res => {
+        const tasks = res.data;
         taskList.innerHTML = "";
 
-        res.data.forEach(t => {
-
-            let color = "";
-            
-            if (t.priority === "High") color = "red";
-            else if (t.priority === "Medium") color = "orange";
-            else color = "green";
-            
+        tasks.forEach(t => {
             taskList.innerHTML += `
             <li>
-                ${t.title} (${t.category})
-                
-                <span style="
-                    background:${color};
-                    color:white;
-                    padding:2px 6px;
-                    border-radius:5px;
-                    margin-left:5px;
-                    font-size:12px;
-                ">
-                    ${t.priority}
+                <span class="${t.completed ? 'completed' : ''}">
+                    ${t.title} (${t.category})
+                    <span class="priority ${t.priority.toLowerCase()}">
+                        ${t.priority}
+                    </span>
                 </span>
-                
-                <button onclick="toggleTask('${t._id}', ${!t.completed})">
-                    ${t.completed ? 'Undo' : 'Complete'}
-                </button>
-                
-                <button onclick="editTask('${t._id}', '${t.title}')">Edit</button>
-            
-                <button onclick="deleteTask('${t._id}')">Delete</button>
+
+                <div>
+                    <button onclick="toggleTask('${t._id}', ${!t.completed})">Complete</button>
+                    <button onclick="editTask('${t._id}', '${t.title}')">Edit</button>
+                    <button onclick="deleteTask('${t._id}')">Delete</button>
+                </div>
             </li>`;
         });
     });
