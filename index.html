@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Task Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
    body {
     font-family: 'Segoe UI', sans-serif;
@@ -251,9 +252,9 @@ function loadTasks() {
                 </span>
 
                 <div>
-                    <button onclick="toggleTask('${t._id}', ${!t.completed})">Complete</button>
-                    <button onclick="editTask('${t._id}', '${t.title}')">Edit</button>
-                    <button onclick="deleteTask('${t._id}')">Delete</button>
+                    <button onclick="toggleTask('${t._id}', ${!t.completed})"><i class="fas fa-check"></i></button>
+                    <button onclick="editTask('${t._id}', '${t.title}')"><i class="fas fa-edit"></i></button>
+                    <button onclick="deleteTask('${t._id}')"><i class="fas fa-trash"></i></button>
                 </div>
             </li>`;
         });
