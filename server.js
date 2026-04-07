@@ -95,6 +95,8 @@ app.post("/tasks", auth, async (req, res) => {
         const task = new Task({
             title: req.body.title,
             category: req.body.category,
+            priority: req.body.priority,  
+            dueDate: req.body.dueDate,
             userId: req.user.id
         });
 
@@ -102,6 +104,7 @@ app.post("/tasks", auth, async (req, res) => {
         res.status(201).json(task);
     } catch (err) {
         res.status(500).json({ error: err.message });
+        console.log(req.body);
     }
 });
 
