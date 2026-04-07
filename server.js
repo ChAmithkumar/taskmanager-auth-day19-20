@@ -105,6 +105,17 @@ app.post("/tasks", auth, async (req, res) => {
     }
 });
 
+axios.post(API + "/tasks", {
+    title: taskInput.value,
+    category: category.value,
+    priority: priority.value,
+    dueDate: dueDate.value
+}, {
+    headers: {
+        Authorization: "Bearer " + localStorage.getItem("token")
+    }
+});
+
 // UPDATE TASK
 app.put("/tasks/:id", auth, async (req, res) => {
     try {
