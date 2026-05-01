@@ -145,9 +145,7 @@ Authorization: Bearer <token>
 
 ---
 
-## 📸 Screenshots
 
-(Add screenshots of your UI here)
 
 ---
 
@@ -167,14 +165,8 @@ This project was built as part of a **Full Stack Internship Learning Program**.
 ## 💡 Future Improvements
 
 * 🎨 Improve UI/UX (modern design)
-* 📅 Add due dates
-* ⭐ Task priority
 * 👤 User profile
 * 🌙 Dark mode
+*    More Responsive 
+*    Multiple pages
 
----
-
-# Next update.
--> The next update will be seperate signup and login page.
--> Dark/Light toggle switch.
--> Setting alerts on due date.  
